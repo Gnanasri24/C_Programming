@@ -4,19 +4,14 @@
 #include <math.h>
 int main(){
 
-	char str1[] = "4949530612642323625417080671";
-	int length = strlen(str1);
-	long long sum = 0;
-	for(int i = 0; i<length;i++){
-
-	long long num =0;
-		for(int j = i; j<length;j++){
-
-			num = num * 10 + (str1[j] - '0') % 1000000007;
-			printf("%lld \n",num);
-                        sum = (sum + num) % 1000000007;
-		}
-	}
-
-	printf("%lld",sum);
+	char s[] = "1234";
+	long long mod = 1000000007; 
+        long long ans = 0, prev = 0, curr = 0;
+        for(int i = 0; i < strlen(s); i++)
+        {
+            curr = (prev * 10)%mod + (s[i]-'0') * (i+1);
+            prev = curr%mod;
+            ans = (ans + curr)%mod; 
+        }
+        printf("%lld \n ",ans%mod);
 }
